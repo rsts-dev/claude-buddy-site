@@ -291,8 +291,40 @@ Potential improvements for the landing page:
 - ✅ Preserved visual consistency with Claude Code design system
 - ✅ Updated footer and version indicators
 
+## 📝 Recent v4.0 Updates
+
+### Content Updates (November 2025)
+- ✅ Updated hero section to emphasize native plugin marketplace integration
+- ✅ Replaced version comparison table with "Why Plugin?" section highlighting 4 key benefits
+- ✅ Updated installation section with plugin marketplace commands
+- ✅ Removed all NPM package references and installation methods
+- ✅ Updated prerequisites to remove Node.js requirement
+- ✅ Changed all version references from 3.0.0 to 4.0.0
+- ✅ Updated repository links to point to claude-buddy-marketplace
+- ✅ Updated meta tags and structured data to reflect plugin distribution
+- ✅ Updated footer copyright to v4.0.0
+
+### Distribution Changes
+- ✅ Migrated from NPM package to Claude Code plugin marketplace
+- ✅ Changed installation from `npm install -g claude-buddy` to `/plugin marketplace add` + `/plugin install`
+- ✅ Updated all GitHub links from rsts-dev/claude-buddy to rsts-dev/claude-buddy-marketplace
+- ✅ Removed all NPM-related links and documentation references
+- ✅ Emphasized native Claude Code integration benefits
+
+### Key Messaging Changes
+**v4.0 Plugin Benefits:**
+1. **Native Integration**: Deep integration with Claude Code's plugin system
+2. **One-Command Install**: Single command installation from plugin marketplace
+3. **Automatic Updates**: Plugin marketplace handles updates automatically
+4. **No Breaking Changes**: All workflows, commands, and personas work identically
+
+**Repository Structure:**
+- **rsts-dev/claude-buddy**: Main project and documentation repository
+- **rsts-dev/claude-buddy-marketplace**: Plugin distribution repository
+- **rsts-dev/claude-buddy-site**: Landing page and website
+
 ---
 
 **Made with ♾️ for the Claude Code community**
 
-*This landing page serves as the professional showcase for Claude Buddy 3.0, a skills-only architecture with native Claude Code integration. Designed to demonstrate the power of progressive disclosure, auto-activation, and 40% package size reduction to professional developers.*
+*This landing page serves as the professional showcase for Claude Buddy 4.0, a native Claude Code plugin with marketplace integration. Designed to demonstrate the power of native integration, one-command installation, and automatic updates to professional developers.*

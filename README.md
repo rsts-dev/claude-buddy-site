@@ -1,6 +1,8 @@
-# Claude Buddy Official Website
+# Claude Buddy 4.0 Official Website
 
-Official website for Claude Buddy - Enterprise-Ready AI Development Platform for Claude Code.
+Official website for Claude Buddy 4.0 - Enterprise-Ready AI Development Platform for Claude Code.
+
+**Version**: 4.0.0 - Native Claude Code Plugin with Marketplace Integration
 
 **Live Site**: [https://claude-buddy.dev](https://claude-buddy.dev)
 
