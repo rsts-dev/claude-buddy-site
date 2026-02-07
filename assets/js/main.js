@@ -5,54 +5,193 @@
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
-    initializeTheme();
     initializeNavigation();
     initializeAnimations();
     initializeInteractions();
     initializeCopyToClipboard();
     initializePersonaCards();
     initializeScrollEffects();
+    initializeHeaderScroll();
+    initializePersonaScroll();
+    initialize3DCards();
+    initializeCounters();
 });
 
 /**
- * Initialize theme management
+ * Initialize header scroll effect
  */
-function initializeTheme() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    
-    // Check for saved theme preference or default to light
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    body.setAttribute('data-theme', currentTheme);
-    
-    // Theme toggle functionality
-    if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Smooth transition
-            body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
-        });
-    }
-    
-    // Check system preference
-    if (window.matchMedia && !localStorage.getItem('theme')) {
-        const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        if (darkModeQuery.matches) {
-            body.setAttribute('data-theme', 'dark');
+function initializeHeaderScroll() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    const updateHeader = () => {
+        if (window.scrollY > 50) {
+            header.classList.add('header--scrolled');
+        } else {
+            header.classList.remove('header--scrolled');
         }
-        
-        // Listen for system theme changes
-        darkModeQuery.addEventListener('change', function(e) {
-            if (!localStorage.getItem('theme')) {
-                body.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    };
+
+    // Initial check
+    updateHeader();
+
+    // Listen for scroll
+    window.addEventListener('scroll', updateHeader, { passive: true });
+}
+
+/**
+ * Initialize persona horizontal scroll with indicators
+ */
+function initializePersonaScroll() {
+    const grid = document.querySelector('.personas__grid');
+    const hintContainer = document.getElementById('persona-scroll-hint');
+
+    if (!grid || !hintContainer) return;
+
+    const cards = grid.querySelectorAll('.persona-card');
+    if (cards.length === 0) return;
+
+    // Calculate number of "pages" based on visible cards
+    const cardWidth = 280 + 24; // card width + gap
+    const updateIndicators = () => {
+        const visibleWidth = grid.clientWidth;
+        const totalWidth = grid.scrollWidth;
+        const numDots = Math.ceil(totalWidth / visibleWidth);
+
+        // Create dots if needed
+        if (hintContainer.children.length !== numDots) {
+            hintContainer.innerHTML = '';
+            for (let i = 0; i < numDots; i++) {
+                const dot = document.createElement('span');
+                dot.setAttribute('role', 'button');
+                dot.setAttribute('aria-label', `Scroll to page ${i + 1}`);
+                dot.setAttribute('tabindex', '0');
+
+                // Click to scroll to position
+                dot.addEventListener('click', () => {
+                    grid.scrollTo({
+                        left: i * visibleWidth,
+                        behavior: 'smooth'
+                    });
+                });
+
+                // Keyboard accessibility
+                dot.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        dot.click();
+                    }
+                });
+
+                hintContainer.appendChild(dot);
+            }
+        }
+
+        // Update active state based on scroll position
+        const scrollPosition = grid.scrollLeft;
+        const activeIndex = Math.round(scrollPosition / visibleWidth);
+
+        Array.from(hintContainer.children).forEach((dot, index) => {
+            dot.classList.toggle('active', index === activeIndex);
+        });
+    };
+
+    // Initial update
+    updateIndicators();
+
+    // Update on scroll
+    grid.addEventListener('scroll', updateIndicators, { passive: true });
+
+    // Update on resize
+    window.addEventListener('resize', updateIndicators, { passive: true });
+}
+
+/**
+ * Initialize 3D tilt effect on cards
+ */
+function initialize3DCards() {
+    // Check for reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+
+    const cards = document.querySelectorAll('.feature-card, .persona-card');
+
+    cards.forEach(card => {
+        card.style.transformStyle = 'preserve-3d';
+        card.style.transition = 'transform 0.15s ease-out';
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            // Subtle tilt (max 6 degrees)
+            const rotateX = ((y - centerY) / centerY) * -6;
+            const rotateY = ((x - centerX) / centerX) * 6;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        });
+    });
+}
+
+/**
+ * Initialize animated counters for stats
+ */
+function initializeCounters() {
+    const counters = document.querySelectorAll('.stat__number');
+    if (counters.length === 0) return;
+
+    const animateCounter = (element) => {
+        const text = element.textContent.trim();
+        const target = parseInt(text, 10);
+
+        // Skip non-numeric values (like emoji)
+        if (isNaN(target)) return;
+
+        // Store original value for animation
+        element.setAttribute('data-target', target);
+        element.textContent = '0';
+
+        const duration = 1500; // 1.5 seconds
+        const startTime = performance.now();
+
+        const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Ease-out cubic for smooth deceleration
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(easeOut * target);
+
+            element.textContent = current;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target;
+            }
+        };
+
+        requestAnimationFrame(updateCounter);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
             }
         });
-    }
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => observer.observe(counter));
 }
 
 /**
@@ -254,7 +393,7 @@ function showToast(message, type = 'info') {
     toast.className = `toast toast--${type}`;
     toast.innerHTML = `
         <div class="toast__content">
-            <span class="toast__icon">${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span>
+            <span class="toast__icon">${type === 'success' ? '+' : type === 'error' ? 'x' : 'i'}</span>
             <span class="toast__message">${message}</span>
         </div>
     `;
@@ -360,7 +499,7 @@ function initializePersonaCards() {
 function showPersonaModal(personaName, cardElement) {
     const personaData = {
         architect: {
-            title: '🏗️ Architect',
+            title: 'Architect',
             description: 'Systems design, scalability, architecture patterns',
             details: 'The Architect persona specializes in high-level system design, scalability planning, and architectural decision-making. It helps with microservices design, database architecture, API design, and technology selection.',
             examples: [
@@ -370,7 +509,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         security: {
-            title: '🛡️ Security Expert',
+            title: 'Security Expert',
             description: 'Threat modeling, vulnerabilities, compliance',
             details: 'The Security persona focuses on identifying vulnerabilities, implementing security best practices, and ensuring compliance with security standards like OWASP, GDPR, and industry-specific regulations.',
             examples: [
@@ -380,7 +519,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         frontend: {
-            title: '🎨 Frontend Expert',
+            title: 'Frontend Expert',
             description: 'UI/UX, accessibility, responsive design',
             details: 'The Frontend persona specializes in user interface development, accessibility standards, responsive design patterns, and modern frontend frameworks. It helps optimize user experience and ensures cross-browser compatibility.',
             examples: [
@@ -390,7 +529,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         backend: {
-            title: '⚙️ Backend Expert',
+            title: 'Backend Expert',
             description: 'APIs, databases, server reliability',
             details: 'The Backend persona focuses on server-side development, API design, database optimization, and system reliability. It helps with performance tuning, scalability, and implementing robust error handling.',
             examples: [
@@ -400,7 +539,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         performance: {
-            title: '⚡ Performance Expert',
+            title: 'Performance Expert',
             description: 'Optimization, bottlenecks, efficiency',
             details: 'The Performance persona specializes in identifying and resolving performance bottlenecks, optimizing code execution, and improving system efficiency. It helps with profiling, caching strategies, and load optimization.',
             examples: [
@@ -410,7 +549,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         devops: {
-            title: '🚀 DevOps Expert',
+            title: 'DevOps Expert',
             description: 'Infrastructure, deployment, observability',
             details: 'The DevOps persona focuses on CI/CD pipelines, infrastructure as code, containerization, and monitoring. It helps streamline deployment processes and ensures system reliability and observability.',
             examples: [
@@ -420,7 +559,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         qa: {
-            title: '🧪 QA Expert',
+            title: 'QA Expert',
             description: 'Quality assurance, testing, validation',
             details: 'The QA persona specializes in test strategy, test automation, and quality validation. It helps design comprehensive test suites, identify edge cases, and ensure code reliability through systematic testing.',
             examples: [
@@ -430,7 +569,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         analyzer: {
-            title: '🔍 Analyzer',
+            title: 'Analyzer',
             description: 'Root cause analysis, systematic investigation',
             details: 'The Analyzer persona excels at debugging complex issues, performing root cause analysis, and systematic code investigation. It helps trace bugs, understand code flow, and identify hidden dependencies.',
             examples: [
@@ -440,7 +579,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         refactorer: {
-            title: '🔧 Refactorer',
+            title: 'Refactorer',
             description: 'Code quality, technical debt, maintainability',
             details: 'The Refactorer persona focuses on improving code quality, reducing technical debt, and enhancing maintainability. It applies clean code principles, design patterns, and helps modernize legacy code.',
             examples: [
@@ -450,7 +589,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         mentor: {
-            title: '👨‍🏫 Mentor',
+            title: 'Mentor',
             description: 'Knowledge transfer, education, guidance',
             details: 'The Mentor persona specializes in explaining complex concepts, providing learning resources, and guiding best practices. It helps junior developers understand code, patterns, and architectural decisions.',
             examples: [
@@ -460,7 +599,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         scribe: {
-            title: '✍️ Scribe',
+            title: 'Scribe',
             description: 'Professional writing, documentation',
             details: 'The Scribe persona excels at creating clear, comprehensive documentation. It helps write README files, API documentation, code comments, and user guides with a focus on clarity and completeness.',
             examples: [
@@ -470,7 +609,7 @@ function showPersonaModal(personaName, cardElement) {
             ]
         },
         po: {
-            title: '📋 Product Owner',
+            title: 'Product Owner',
             description: 'Product requirements, user stories, strategic planning',
             details: 'The Product Owner persona focuses on translating business needs into technical requirements. It helps create user stories, define acceptance criteria, and align technical decisions with product strategy.',
             examples: [
@@ -658,13 +797,6 @@ function initializeScrollEffects() {
             hero.style.transform = `translateY(${rate}px)`;
         }
 
-        // Header background opacity
-        const header = document.querySelector('.header');
-        if (header) {
-            const opacity = Math.min(scrolled / 100, 1);
-            header.style.background = `rgba(10, 10, 10, ${0.8 + opacity * 0.2})`;
-        }
-
         ticking = false;
     }
 
@@ -758,7 +890,8 @@ function optimizePerformance() {
 
     // Preload critical resources
     const criticalLinks = [
-        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+        'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap',
+        'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap'
     ];
 
     criticalLinks.forEach(href => {

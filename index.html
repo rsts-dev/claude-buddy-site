@@ -13,8 +13,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claude Buddy 4.0 - Native Claude Code Plugin with Marketplace Integration</title>
-    <meta name="description" content="Transform Claude Code with Claude Buddy 4.0. Native plugin marketplace integration with one-command installation, automatic updates, and seamless Claude Code integration. 12 specialized personas, complete workflow automation, and enterprise templates.">
+    <title>Claude Buddy — 12 AI Expert Personas for Claude Code</title>
+    <meta name="description" content="Add 12 specialized AI expert personas to Claude Code. Architecture, security, testing, performance, and more — installed in two commands.">
     <meta name="keywords" content="Claude Code, AI development, coding assistant, personas, automation, TypeScript, JavaScript, Python">
     
     <!-- Canonical URL -->
@@ -22,33 +22,27 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Claude Buddy 4.0 - Native Claude Code Plugin">
-    <meta property="og:description" content="Native Claude Code plugin with marketplace integration. One-command installation, automatic updates, and seamless integration. 12 specialized personas and complete workflow automation.">
+    <meta property="og:title" content="Claude Buddy — Your Claude Code, Supercharged">
+    <meta property="og:description" content="Add 12 specialized AI expert personas to Claude Code. Architecture, security, testing, performance, and more — installed in two commands.">
     <meta property="og:url" content="https://claude-buddy.dev">
+    <meta property="og:image" content="https://claude-buddy.dev/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Twitter -->
+    <meta property="twitter:image" content="https://claude-buddy.dev/assets/images/og-image.png">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Claude Buddy 4.0 - Native Claude Code Plugin">
-    <meta property="twitter:description" content="Native Claude Code plugin with marketplace integration. One-command installation, automatic updates, and seamless integration. Transform your development workflow.">
+    <meta property="twitter:title" content="Claude Buddy — Your Claude Code, Supercharged">
+    <meta property="twitter:description" content="Add 12 specialized AI expert personas to Claude Code. Architecture, security, testing, performance, and more — installed in two commands.">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' role='img' aria-label='Claude Buddy Logo'><text y='.9em' font-size='90'>♾️</text></svg>">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style>
-        @font-face {
-            font-family: 'Styrene';
-            src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Styrene Display';
-            src: url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap');
-            font-display: swap;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -59,7 +53,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Claude Buddy",
-        "version": "4.0.0",
+        "version": "latest",
         "description": "Native Claude Code plugin with marketplace integration, featuring 12 specialized personas and complete workflow automation",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "macOS, Linux, Windows",
@@ -71,29 +65,26 @@
     }
     </script>
 </head>
-<body data-theme="light">
+<body>
     <!-- Header -->
     <header class="header">
         <nav class="nav container">
-            <div class="nav__brand">
-                <span class="nav__logo" role="img" aria-label="Claude Buddy infinity logo">♾️</span>
-                <span class="nav__title">Claude Buddy</span>
-            </div>
+            <a href="#hero" class="nav__brand">
+                <img src="assets/images/cb-image.png" alt="Claude Buddy" class="nav__brand-img">
+            </a>
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
+                    <li class="nav__item"><a href="#whats-new" class="nav__link">Architecture</a></li>
                     <li class="nav__item"><a href="#integration" class="nav__link">Integration</a></li>
                     <li class="nav__item"><a href="#features" class="nav__link">Features</a></li>
                     <li class="nav__item"><a href="#personas" class="nav__link">Personas</a></li>
                     <li class="nav__item"><a href="#installation" class="nav__link">Install</a></li>
                     <li class="nav__item"><a href="https://github.com/rsts-dev/claude-buddy-marketplace" class="nav__link" target="_blank">GitHub</a></li>
+                    <li class="nav__item"><a href="https://og.rsts.dev/blog" class="nav__link" target="_blank">Blog</a></li>
                 </ul>
             </div>
             <div class="nav__actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-                    <span class="theme-toggle__light" role="img" aria-label="Light mode">☀️</span>
-                    <span class="theme-toggle__dark" role="img" aria-label="Dark mode">🌙</span>
-                </button>
-                <a href="https://github.com/rsts-dev/claude-buddy-marketplace#readme" class="btn btn--primary" target="_blank">Get Started</a>
+                <a href="https://github.com/rsts-dev/claude-buddy-marketplace#readme" class="btn btn--primary" target="_blank">Install Free</a>
             </div>
             <div class="nav__toggle" id="nav-toggle">
                 <span></span>
@@ -104,87 +95,71 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero__container container">
-            <div class="hero__content">
+    <section class="hero" id="hero">
+        <div class="hero__visual">
+            <img src="assets/images/banner.png" alt="Claude Buddy - 12 AI Expert Personas" class="hero__banner">
+        </div>
+        <div class="hero__columns container">
+            <div class="hero__text">
                 <h1 class="hero__title">
-                    Claude Buddy 4.0 is Here
-                    <span class="hero__title--accent">Native Claude Code Plugin with Marketplace Integration</span>
+                    Your Claude Code, Supercharged
+                    <span class="hero__title--accent">12 Expert Personas — Architect, Security, DevOps, and More</span>
                 </h1>
                 <p class="hero__description">
-                    Transform Claude Code with native plugin integration. One-command installation, automatic updates, and seamless integration—all through Claude Code's plugin marketplace.
-                    No npm globals, no dependencies, zero breaking changes.
+                    Claude Buddy adds 12 specialized AI personas to Claude Code. Get expert-level guidance for architecture, security, testing, and performance — installed in two commands with zero configuration.
                 </p>
                 <div class="hero__actions">
                     <a href="https://github.com/rsts-dev/claude-buddy"
                        class="btn btn--primary btn--large" target="_blank">
-                        <span role="img" aria-label="Rocket">🚀</span> Explore on GitHub
+                        Get Started Free
                     </a>
-                    <a href="#features" class="btn btn--secondary btn--large">
-                        Learn More
+                    <a href="#personas" class="btn btn--secondary btn--large">
+                        See All 12 Personas
                     </a>
                 </div>
-                <div class="hero__install">
-                    <div class="terminal">
-                        <div class="terminal__header">
-                            <div class="terminal__controls">
-                                <span></span><span></span><span></span>
-                            </div>
-                            <span class="terminal__title">Installation</span>
-                        </div>
-                        <div class="terminal__content">
-                            <div class="terminal__line">
-                                <span class="terminal__prompt">$</span>
-                                <span class="terminal__command">/plugin marketplace add rsts-dev/claude-buddy-marketplace</span>
-                                <button class="terminal__copy" onclick="copyToClipboard('/plugin marketplace add rsts-dev/claude-buddy-marketplace')" aria-label="Copy to clipboard"><span role="img" aria-label="Clipboard">📋</span></button>
-                            </div>
-                            <div class="terminal__line">
-                                <span class="terminal__prompt">$</span>
-                                <span class="terminal__command">/plugin install claude-buddy@claude-buddy-marketplace</span>
-                            </div>
-                            <div class="terminal__line terminal__success">
-                                <span class="terminal__prompt">✓</span>
-                                <span class="terminal__output">Claude Buddy 4.0 installed successfully</span>
-                            </div>
-                            <div class="terminal__line terminal__success">
-                                <span class="terminal__prompt">✓</span>
-                                <span class="terminal__output">Native Claude Code integration activated</span>
-                            </div>
-                            <div class="terminal__line terminal__success">
-                                <span class="terminal__prompt">✓</span>
-                                <span class="terminal__output">12 personas + 8 workflow commands ready</span>
-                            </div>
-                            <div class="terminal__line terminal__success">
-                                <span class="terminal__prompt">✓</span>
-                                <span class="terminal__output">Automatic updates enabled</span>
-                            </div>
-                            <div class="terminal__line terminal__success">
-                                <span class="terminal__prompt">✓</span>
-                                <span class="terminal__output">Plugin marketplace configured</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="hero__social-proof">
+                    <a href="https://github.com/rsts-dev/claude-buddy-marketplace/stargazers" target="_blank">
+                        <img src="https://img.shields.io/github/stars/rsts-dev/claude-buddy-marketplace?style=social" alt="GitHub Stars">
+                    </a>
                 </div>
             </div>
-            <div class="hero__visual">
-                <div class="integration-preview">
-                    <div class="code-comparison">
-                        <div class="code-panel">
-                            <div class="code-panel__header">Claude Code</div>
-                            <div class="code-panel__content">
-                                <span class="code-comment"># Standard Claude Code</span>
-                                <span class="code-line">$ claude "Fix this bug"</span>
-                                <span class="code-output">→ Generic assistance</span>
-                            </div>
+            <div class="hero__install">
+                <div class="terminal">
+                    <div class="terminal__header">
+                        <div class="terminal__controls">
+                            <span></span><span></span><span></span>
                         </div>
-                        <div class="code-panel code-panel--enhanced">
-                            <div class="code-panel__header">Claude Code + Buddy</div>
-                            <div class="code-panel__content">
-                                <span class="code-comment"># Enhanced with personas</span>
-                                <span class="code-line">$ /buddy:persona security performance</span>
-                                <span class="code-output">→ 🛡️ Security + ⚡ Performance</span>
-                                <span class="code-output">→ Multi-expert analysis</span>
-                            </div>
+                        <span class="terminal__title">Installation</span>
+                    </div>
+                    <div class="terminal__content">
+                        <div class="terminal__line">
+                            <span class="terminal__prompt">$</span>
+                            <span class="terminal__command">/plugin marketplace add rsts-dev/claude-buddy-marketplace</span>
+                            <button class="terminal__copy" onclick="copyToClipboard('/plugin marketplace add rsts-dev/claude-buddy-marketplace')" aria-label="Copy to clipboard">Copy</button>
+                        </div>
+                        <div class="terminal__line">
+                            <span class="terminal__prompt">$</span>
+                            <span class="terminal__command">/plugin install claude-buddy@claude-buddy-marketplace</span>
+                        </div>
+                        <div class="terminal__line terminal__success">
+                            <span class="terminal__prompt">✓</span>
+                            <span class="terminal__output">Claude Buddy installed successfully</span>
+                        </div>
+                        <div class="terminal__line terminal__success">
+                            <span class="terminal__prompt">✓</span>
+                            <span class="terminal__output">Native Claude Code integration activated</span>
+                        </div>
+                        <div class="terminal__line terminal__success">
+                            <span class="terminal__prompt">✓</span>
+                            <span class="terminal__output">12 personas + 8 workflow commands ready</span>
+                        </div>
+                        <div class="terminal__line terminal__success">
+                            <span class="terminal__prompt">✓</span>
+                            <span class="terminal__output">Automatic updates enabled</span>
+                        </div>
+                        <div class="terminal__line terminal__success">
+                            <span class="terminal__prompt">✓</span>
+                            <span class="terminal__output">Plugin marketplace configured</span>
                         </div>
                     </div>
                 </div>
@@ -195,12 +170,12 @@
     <!-- What's New Section -->
     <section class="whats-new" id="whats-new">
         <div class="container">
-            <h2 class="section__title">Claude Buddy 3.0: Skills-Only Architecture</h2>
-            <p class="section__subtitle">Complete migration to Claude Code Skills with 40% smaller package and native integration</p>
+            <h2 class="section__title">Claude Buddy: Native Plugin Architecture</h2>
+            <p class="section__subtitle">Skills-based system with marketplace integration, automatic updates, and 40% smaller footprint</p>
 
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-card__icon" role="img" aria-label="Sparkles">✨</div>
+                    <img src="assets/images/icons/SK.png" alt="Skills" class="feature-card__icon">
                     <h3 class="feature-card__title">Skills-Only System</h3>
                     <p class="feature-card__description">Complete migration to Claude Code Skills native pattern</p>
                     <ul class="feature-card__details">
@@ -212,7 +187,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-card__icon" role="img" aria-label="Lightning">⚡</div>
+                    <img src="assets/images/icons/AA.png" alt="Auto-Activation" class="feature-card__icon">
                     <h3 class="feature-card__title">Auto-Activation</h3>
                     <p class="feature-card__description">Context-aware skills activate automatically</p>
                     <ul class="feature-card__details">
@@ -224,7 +199,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-card__icon" role="img" aria-label="Gauge">📊</div>
+                    <img src="assets/images/icons/TS.png" alt="Token Savings" class="feature-card__icon">
                     <h3 class="feature-card__title">30-70% Token Savings</h3>
                     <p class="feature-card__description">Load only what you need, when you need it</p>
                     <ul class="feature-card__details">
@@ -236,7 +211,7 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-card__icon" role="img" aria-label="Target">🎯</div>
+                    <img src="assets/images/icons/SP.png" alt="Standard Pattern" class="feature-card__icon">
                     <h3 class="feature-card__title">Standard Pattern</h3>
                     <p class="feature-card__description">Native Claude Code Skills implementation</p>
                     <ul class="feature-card__details">
@@ -250,31 +225,31 @@
 
             <div class="why-plugin">
                 <h3 class="why-plugin__title">Why Claude Code Plugin?</h3>
-                <p class="why-plugin__subtitle">Claude Buddy 4.0 brings native plugin marketplace integration with powerful benefits</p>
+                <p class="why-plugin__subtitle">Claude Buddy brings native plugin marketplace integration with powerful benefits</p>
 
                 <div class="why-plugin__grid">
                     <div class="why-plugin__card">
-                        <div class="why-plugin__icon" role="img" aria-label="Integration">🔌</div>
+                        <img src="assets/images/icons/NI.png" alt="Native Integration" class="why-plugin__icon">
                         <h4>Native Integration</h4>
                         <p>Deep integration with Claude Code's plugin system. No external tools, no manual configuration—just install and start working.</p>
                     </div>
 
                     <div class="why-plugin__card">
-                        <div class="why-plugin__icon" role="img" aria-label="Fast">⚡</div>
+                        <img src="assets/images/icons/OC.png" alt="One-Command" class="why-plugin__icon">
                         <h4>One-Command Install</h4>
                         <p>Gone are the days of npm installs and setup scripts. Install from the plugin marketplace with a single command.</p>
                     </div>
 
                     <div class="why-plugin__card">
-                        <div class="why-plugin__icon" role="img" aria-label="Update">🔄</div>
+                        <img src="assets/images/icons/AU.png" alt="Auto Updates" class="why-plugin__icon">
                         <h4>Automatic Updates</h4>
                         <p>Always get the latest features and improvements. The plugin marketplace handles updates automatically—no manual intervention needed.</p>
                     </div>
 
                     <div class="why-plugin__card">
-                        <div class="why-plugin__icon" role="img" aria-label="Shield">🛡️</div>
+                        <img src="assets/images/icons/BC.png" alt="No Breaking Changes" class="why-plugin__icon">
                         <h4>No Breaking Changes</h4>
-                        <p>All your workflows, commands, and personas work identically. v4.0 is purely a distribution upgrade—your experience remains seamless.</p>
+                        <p>All your workflows, commands, and personas work identically. The plugin architecture is a distribution upgrade—your experience remains seamless.</p>
                     </div>
                 </div>
             </div>
@@ -290,19 +265,19 @@
             <div class="integration__diagram">
                 <div class="integration__flow">
                     <div class="flow-item">
-                        <div class="flow-item__icon" role="img" aria-label="Robot">🤖</div>
+                        <img src="assets/images/icons/CC.png" alt="Claude Code" class="flow-item__icon">
                         <h3>Claude Code</h3>
                         <p>Your foundation</p>
                     </div>
                     <div class="flow-arrow">→</div>
                     <div class="flow-item">
-                        <div class="flow-item__icon" role="img" aria-label="Plus">➕</div>
+                        <img src="assets/images/icons/CB.png" alt="Claude Buddy" class="flow-item__icon">
                         <h3>Claude Buddy</h3>
                         <p>Enhanced capabilities</p>
                     </div>
                     <div class="flow-arrow">→</div>
                     <div class="flow-item flow-item--result">
-                        <div class="flow-item__icon" role="img" aria-label="Rocket">🚀</div>
+                        <img src="assets/images/icons/SC.png" alt="Supercharged" class="flow-item__icon">
                         <h3>Supercharged Experience</h3>
                         <p>Expert personas + automation</p>
                     </div>
@@ -311,15 +286,15 @@
             
             <div class="integration__features">
                 <div class="integration-card">
-                    <h3><span role="img" aria-label="Link">🔗</span> Zero Configuration</h3>
+                    <h3>Zero Configuration</h3>
                     <p>Works instantly with your existing Claude Code installation. No complex setup or migration required.</p>
                 </div>
                 <div class="integration-card">
-                    <h3><span role="img" aria-label="Target">🎯</span> Local Processing</h3>
+                    <h3>Local Processing</h3>
                     <p>All enhancements happen locally. No external API calls, keeping your code secure and private.</p>
                 </div>
                 <div class="integration-card">
-                    <h3><span role="img" aria-label="Refresh">🔄</span> Seamless Workflow</h3>
+                    <h3>Seamless Workflow</h3>
                     <p>Use Claude Code normally while gaining access to specialized personas and enhanced commands.</p>
                 </div>
             </div>
@@ -333,7 +308,7 @@
             <div class="comparison__grid">
                 <div class="comparison__card comparison__card--before">
                     <div class="comparison__header">
-                        <span class="comparison__icon" role="img" aria-label="Frustrated">😤</span>
+                        <span class="comparison__icon">--</span>
                         <h3>Before</h3>
                     </div>
                     <ul class="comparison__list">
@@ -346,7 +321,7 @@
                 </div>
                 <div class="comparison__card comparison__card--after">
                     <div class="comparison__header">
-                        <span class="comparison__icon" role="img" aria-label="Rocket">🚀</span>
+                        <span class="comparison__icon">++</span>
                         <h3>After</h3>
                     </div>
                     <ul class="comparison__list">
@@ -369,7 +344,7 @@
             <!-- Persona System -->
             <div class="feature-block">
                 <div class="feature-block__content">
-                    <div class="feature-block__icon" role="img" aria-label="Theater masks">🎭</div>
+                    <img src="assets/images/icons/PS.png" alt="Persona System" class="feature-block__icon">
                     <h3 class="feature-block__title">Intelligent Persona System</h3>
                     <p class="feature-block__description">
                         12 specialized AI experts automatically activate based on your project context. 
@@ -391,8 +366,8 @@
                         </div>
                         <div class="command-demo__output">
                             <div class="persona-activation">
-                                <span class="persona-tag persona-tag--security"><span role="img" aria-label="Shield">🛡️</span> Security Expert</span>
-                                <span class="persona-tag persona-tag--analyzer"><span role="img" aria-label="Magnifying glass">🔍</span> Analyzer</span>
+                                <span class="persona-tag persona-tag--security">Security Expert</span>
+                                <span class="persona-tag persona-tag--analyzer">Analyzer</span>
                             </div>
                             <p class="analysis-text">Activating security and analysis personas based on context...</p>
                         </div>
@@ -403,7 +378,7 @@
             <!-- Safety Hooks -->
             <div class="feature-block feature-block--reverse">
                 <div class="feature-block__content">
-                    <div class="feature-block__icon" role="img" aria-label="Lock">🔒</div>
+                    <img src="assets/images/icons/SF.png" alt="Safety" class="feature-block__icon">
                     <h3 class="feature-block__title">Safety-First Design</h3>
                     <p class="feature-block__description">
                         Built-in protection against accidental data exposure and dangerous commands. 
@@ -420,7 +395,7 @@
                     <div class="safety-demo">
                         <div class="safety-alert">
                             <div class="alert alert--danger">
-                                <span class="alert__icon" role="img" aria-label="Shield">🛡️</span>
+                                <span class="alert__icon">!</span>
                                 <div class="alert__content">
                                     <strong>File Protection Active</strong>
                                     <p>Blocked write to .env file - contains sensitive data</p>
@@ -429,7 +404,7 @@
                         </div>
                         <div class="safety-alert">
                             <div class="alert alert--warning">
-                                <span class="alert__icon" role="img" aria-label="Prohibited">🚫</span>
+                                <span class="alert__icon">x</span>
                                 <div class="alert__content">
                                     <strong>Dangerous Command Blocked</strong>
                                     <p>Prevented execution of 'rm -rf /'</p>
@@ -443,7 +418,7 @@
             <!-- Slash Commands -->
             <div class="feature-block">
                 <div class="feature-block__content">
-                    <div class="feature-block__icon" role="img" aria-label="Lightning bolt">⚡</div>
+                    <img src="assets/images/icons/SC.png" alt="Slash Commands" class="feature-block__icon">
                     <h3 class="feature-block__title">AI-Powered Slash Commands</h3>
                     <p class="feature-block__description">
                         Powerful slash commands that leverage persona intelligence for common development tasks. 
@@ -477,15 +452,15 @@
                             <div class="command-result">
                                 <div class="improvement-suggestions">
                                     <div class="suggestion">
-                                        <span class="suggestion__icon" role="img" aria-label="Wrench">🔧</span>
+                                        <span class="suggestion__icon">></span>
                                         <span class="suggestion__text">Creating: Entity models and repositories</span>
                                     </div>
                                     <div class="suggestion">
-                                        <span class="suggestion__icon" role="img" aria-label="Lightning">⚡</span>
+                                        <span class="suggestion__icon">></span>
                                         <span class="suggestion__text">Testing: Unit tests with TDD approach</span>
                                     </div>
                                     <div class="suggestion">
-                                        <span class="suggestion__icon" role="img" aria-label="Shield">🛡️</span>
+                                        <span class="suggestion__icon">></span>
                                         <span class="suggestion__text">Validating: Integration tests passing</span>
                                     </div>
                                 </div>
@@ -506,7 +481,7 @@
             <div class="templates-grid">
                 <div class="template-showcase">
                     <div class="template-showcase__header">
-                        <div class="template-showcase__icon" role="img" aria-label="Infinity">∞</div>
+                        <img src="assets/images/icons/MS.png" alt="MuleSoft" class="template-showcase__icon">
                         <h3 class="template-showcase__title">MuleSoft API Platform</h3>
                         <p class="template-showcase__tagline">API-Led Connectivity</p>
                     </div>
@@ -531,7 +506,7 @@
 
                 <div class="template-showcase">
                     <div class="template-showcase__header">
-                        <div class="template-showcase__icon" role="img" aria-label="Gear">⚙️</div>
+                        <img src="assets/images/icons/JH.png" alt="JHipster" class="template-showcase__icon">
                         <h3 class="template-showcase__title">JHipster Full-Stack</h3>
                         <p class="template-showcase__tagline">Enterprise Applications</p>
                     </div>
@@ -647,7 +622,7 @@
 
             <div class="personas-intro">
                 <p class="personas-intro__text">
-                    <strong>v4.0 Plugin Architecture:</strong> Personas are native Claude Code Skills with SKILL.md frontmatter.
+                    <strong>Plugin Architecture:</strong> Personas are native Claude Code Skills with SKILL.md frontmatter.
                     Auto-activate based on task patterns, file types, and command context. Load progressively for 30-70% token savings.
                     No manual loading required—skills activate when you need them.
                 </p>
@@ -655,7 +630,7 @@
             
             <div class="personas__grid">
                 <div class="persona-card" data-persona="architect">
-                    <div class="persona-card__icon" role="img" aria-label="Building construction">🏗️</div>
+                    <img src="assets/images/icons/AR.png" alt="Architect" class="persona-card__icon">
                     <h3 class="persona-card__title">Architect</h3>
                     <p class="persona-card__description">Systems design, scalability, architecture patterns</p>
                     <div class="persona-card__tags">
@@ -666,7 +641,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="security">
-                    <div class="persona-card__icon" role="img" aria-label="Shield">🛡️</div>
+                    <img src="assets/images/icons/SE.png" alt="Security" class="persona-card__icon">
                     <h3 class="persona-card__title">Security</h3>
                     <p class="persona-card__description">Threat modeling, vulnerabilities, compliance</p>
                     <div class="persona-card__tags">
@@ -677,7 +652,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="frontend">
-                    <div class="persona-card__icon" role="img" aria-label="Artist palette">🎨</div>
+                    <img src="assets/images/icons/FE.png" alt="Frontend" class="persona-card__icon">
                     <h3 class="persona-card__title">Frontend</h3>
                     <p class="persona-card__description">UI/UX, accessibility, responsive design</p>
                     <div class="persona-card__tags">
@@ -688,7 +663,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="backend">
-                    <div class="persona-card__icon" role="img" aria-label="Gear">⚙️</div>
+                    <img src="assets/images/icons/BE.png" alt="Backend" class="persona-card__icon">
                     <h3 class="persona-card__title">Backend</h3>
                     <p class="persona-card__description">APIs, databases, server reliability</p>
                     <div class="persona-card__tags">
@@ -699,7 +674,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="performance">
-                    <div class="persona-card__icon" role="img" aria-label="Lightning bolt">⚡</div>
+                    <img src="assets/images/icons/PF.png" alt="Performance" class="persona-card__icon">
                     <h3 class="persona-card__title">Performance</h3>
                     <p class="persona-card__description">Optimization, bottlenecks, efficiency</p>
                     <div class="persona-card__tags">
@@ -710,7 +685,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="devops">
-                    <div class="persona-card__icon" role="img" aria-label="Rocket">🚀</div>
+                    <img src="assets/images/icons/DO.png" alt="DevOps" class="persona-card__icon">
                     <h3 class="persona-card__title">DevOps</h3>
                     <p class="persona-card__description">Infrastructure, deployment, observability</p>
                     <div class="persona-card__tags">
@@ -721,7 +696,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="qa">
-                    <div class="persona-card__icon" role="img" aria-label="Test tube">🧪</div>
+                    <img src="assets/images/icons/QA.png" alt="QA" class="persona-card__icon">
                     <h3 class="persona-card__title">QA</h3>
                     <p class="persona-card__description">Quality assurance, testing, validation</p>
                     <div class="persona-card__tags">
@@ -732,7 +707,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="analyzer">
-                    <div class="persona-card__icon" role="img" aria-label="Magnifying glass">🔍</div>
+                    <img src="assets/images/icons/AN.png" alt="Analyzer" class="persona-card__icon">
                     <h3 class="persona-card__title">Analyzer</h3>
                     <p class="persona-card__description">Root cause analysis, systematic investigation</p>
                     <div class="persona-card__tags">
@@ -743,7 +718,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="refactorer">
-                    <div class="persona-card__icon" role="img" aria-label="Wrench">🔧</div>
+                    <img src="assets/images/icons/RF.png" alt="Refactorer" class="persona-card__icon">
                     <h3 class="persona-card__title">Refactorer</h3>
                     <p class="persona-card__description">Code quality, technical debt, maintainability</p>
                     <div class="persona-card__tags">
@@ -754,7 +729,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="mentor">
-                    <div class="persona-card__icon" role="img" aria-label="Teacher">👨‍🏫</div>
+                    <img src="assets/images/icons/MN.png" alt="Mentor" class="persona-card__icon">
                     <h3 class="persona-card__title">Mentor</h3>
                     <p class="persona-card__description">Knowledge transfer, education, guidance</p>
                     <div class="persona-card__tags">
@@ -765,7 +740,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="scribe">
-                    <div class="persona-card__icon" role="img" aria-label="Writing hand">✍️</div>
+                    <img src="assets/images/icons/SC.png" alt="Scribe" class="persona-card__icon">
                     <h3 class="persona-card__title">Scribe</h3>
                     <p class="persona-card__description">Professional writing, documentation</p>
                     <div class="persona-card__tags">
@@ -776,7 +751,7 @@
                 </div>
                 
                 <div class="persona-card" data-persona="po">
-                    <div class="persona-card__icon" role="img" aria-label="Clipboard">📋</div>
+                    <img src="assets/images/icons/PO.png" alt="Product Owner" class="persona-card__icon">
                     <h3 class="persona-card__title">Product Owner</h3>
                     <p class="persona-card__description">Product requirements, user stories, strategic planning</p>
                     <div class="persona-card__tags">
@@ -786,6 +761,7 @@
                     </div>
                 </div>
             </div>
+            <div class="personas__scroll-hint" id="persona-scroll-hint" aria-label="Scroll position indicators"></div>
         </div>
     </section>
 
@@ -797,10 +773,10 @@
             
             <div class="installation__options">
                 <div class="install-option install-option--featured">
-                    <h3 class="install-option__title"><span role="img" aria-label="Plugin">🔌</span> Plugin Marketplace Installation</h3>
+                    <h3 class="install-option__title">Plugin Marketplace Installation</h3>
                     <p class="install-option__description">Two simple commands - that's all you need</p>
                     <div class="code-block">
-                        <button class="code-block__copy" onclick="copyToClipboard('/plugin marketplace add rsts-dev/claude-buddy-marketplace\n/plugin install claude-buddy@claude-buddy-marketplace')" aria-label="Copy to clipboard"><span role="img" aria-label="Clipboard">📋</span></button>
+                        <button class="code-block__copy" onclick="copyToClipboard('/plugin marketplace add rsts-dev/claude-buddy-marketplace\n/plugin install claude-buddy@claude-buddy-marketplace')" aria-label="Copy to clipboard">Copy</button>
                         <pre><code># Step 1: Add the marketplace
 /plugin marketplace add rsts-dev/claude-buddy-marketplace
 
@@ -813,10 +789,10 @@
                 </div>
 
                 <div class="install-option">
-                    <h3 class="install-option__title"><span role="img" aria-label="Test">🧪</span> Quick Test</h3>
+                    <h3 class="install-option__title">Quick Test</h3>
                     <p class="install-option__description">Verify your installation</p>
                     <div class="code-block">
-                        <button class="code-block__copy" onclick="copyToClipboard('/buddy:persona architect')" aria-label="Copy to clipboard"><span role="img" aria-label="Clipboard">📋</span></button>
+                        <button class="code-block__copy" onclick="copyToClipboard('/buddy:persona architect')" aria-label="Copy to clipboard">Copy</button>
                         <pre><code># Try any persona command
 /buddy:persona architect
 
@@ -830,21 +806,21 @@
                 <h4 class="requirements__title">Prerequisites</h4>
                 <div class="requirements__grid">
                     <div class="requirement">
-                        <span class="requirement__icon" role="img" aria-label="Crystal ball">🔮</span>
+                        <img src="assets/images/icons/CC.png" alt="Claude Code" class="requirement__icon">
                         <div class="requirement__content">
                             <strong>Claude Code</strong>
                             <span>Latest version recommended</span>
                         </div>
                     </div>
                     <div class="requirement">
-                        <span class="requirement__icon" role="img" aria-label="Snake">🐍</span>
+                        <img src="assets/images/icons/PY.png" alt="Python" class="requirement__icon">
                         <div class="requirement__content">
                             <strong>Python 3.8+</strong>
                             <span>For safety hooks</span>
                         </div>
                     </div>
                     <div class="requirement">
-                        <span class="requirement__icon" role="img" aria-label="Package">📦</span>
+                        <img src="assets/images/icons/UV.png" alt="UV" class="requirement__icon">
                         <div class="requirement__content">
                             <strong>uv</strong>
                             <span>Fast Python package manager</span>
@@ -867,11 +843,11 @@
                 <div class="cta__actions">
                     <a href="https://github.com/rsts-dev/claude-buddy-marketplace"
                        class="btn btn--primary btn--large" target="_blank">
-                        <span role="img" aria-label="Rocket">🚀</span> Get Started on GitHub
+                        Install Claude Buddy Free
                     </a>
-                    <a href="https://github.com/rsts-dev/claude-buddy-marketplace/blob/master/README.md"
-                       class="btn btn--secondary btn--large" target="_blank">
-                        <span role="img" aria-label="Books">📚</span> Read Documentation
+                    <a href="#personas"
+                       class="btn btn--secondary btn--large">
+                        View All Personas
                     </a>
                 </div>
                 <div class="cta__stats">
@@ -884,7 +860,7 @@
                         <span class="stat__label">External API Calls</span>
                     </div>
                     <div class="stat">
-                        <span class="stat__number" role="img" aria-label="Infinity">♾️</span>
+                        <span class="stat__number">&infin;</span>
                         <span class="stat__label">Possibilities</span>
                     </div>
                 </div>
@@ -898,7 +874,7 @@
             <div class="footer__content">
                 <div class="footer__section">
                     <div class="footer__brand">
-                        <span class="footer__logo" role="img" aria-label="Claude Buddy infinity logo">♾️</span>
+                        <img src="assets/images/logo.png" alt="Claude Buddy" class="footer__logo">
                         <span class="footer__title">Claude Buddy</span>
                     </div>
                     <p class="footer__description">
@@ -910,8 +886,8 @@
                     <h4 class="footer__section-title">Resources</h4>
                     <ul class="footer__links">
                         <li><a href="https://github.com/rsts-dev/claude-buddy-marketplace#readme" target="_blank">Documentation</a></li>
-                        <li><a href="https://github.com/rsts-dev/claude-buddy-marketplace/tree/master/plugins/claude-buddy" target="_blank">Plugin Files</a></li>
-                        <li><a href="https://github.com/rsts-dev/claude-buddy" target="_blank">Main Repository</a></li>
+                        <li><a href="https://github.com/rsts-dev/claude-buddy-marketplace/tree/master/plugins" target="_blank">Plugin Files</a></li>
+                        <li><a href="https://github.com/rsts-dev/claude-buddy-marketplace" target="_blank">Main Repository</a></li>
                         <li><a href="https://github.com/rsts-dev/claude-buddy-marketplace/blob/master/README.md" target="_blank">Installation Guide</a></li>
                     </ul>
                 </div>
@@ -920,8 +896,8 @@
                     <h4 class="footer__section-title">Community</h4>
                     <ul class="footer__links">
                         <li><a href="https://github.com/rsts-dev/claude-buddy-marketplace" target="_blank">Plugin Marketplace</a></li>
-                        <li><a href="https://github.com/rsts-dev/claude-buddy/issues" target="_blank">Issues & Support</a></li>
-                        <li><a href="https://github.com/rsts-dev/claude-buddy/discussions" target="_blank">Discussions</a></li>
+                        <li><a href="https://github.com/rsts-dev/claude-buddy-marketplace/issues" target="_blank">Issues & Support</a></li>
+                        <li><a href="https://github.com/rsts-dev/claude-buddy-marketplace" target="_blank">Discussions</a></li>
                         <li><a href="https://claude.ai/code" target="_blank">Claude Code</a></li>
                     </ul>
                 </div>
@@ -929,7 +905,7 @@
                 <div class="footer__section">
                     <h4 class="footer__section-title">Legal</h4>
                     <ul class="footer__links">
-                        <li><a href="https://github.com/rsts-dev/claude-buddy/blob/master/LICENSE" target="_blank">MIT License</a></li>
+                        <li><a href="https://github.com/rsts-dev/claude-buddy-marketplace/blob/master/LICENSE" target="_blank">MIT License</a></li>
                         <li>Open Source</li>
                         <li>No External API Calls</li>
                         <li>Privacy-First</li>
@@ -939,7 +915,7 @@
             
             <div class="footer__bottom">
                 <p class="footer__copyright">
-                    Claude Buddy v4.0.0 • Made with <span role="img" aria-label="Love">❤️</span> for the Claude Code community • Open Source MIT License
+                    Claude Buddy • Made by <a href="https://og.rsts.dev/" target="_blank">Orestes Garcia</a> • Open Source MIT License
                 </p>
             </div>
         </div>
