@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePersonaCards();
     initializeScrollEffects();
     initializeHeaderScroll();
-    initializePersonaScroll();
     initialize3DCards();
     initializeCounters();
 });
@@ -37,73 +36,6 @@ function initializeHeaderScroll() {
 
     // Listen for scroll
     window.addEventListener('scroll', updateHeader, { passive: true });
-}
-
-/**
- * Initialize persona horizontal scroll with indicators
- */
-function initializePersonaScroll() {
-    const grid = document.querySelector('.personas__grid');
-    const hintContainer = document.getElementById('persona-scroll-hint');
-
-    if (!grid || !hintContainer) return;
-
-    const cards = grid.querySelectorAll('.persona-card');
-    if (cards.length === 0) return;
-
-    // Calculate number of "pages" based on visible cards
-    const cardWidth = 280 + 24; // card width + gap
-    const updateIndicators = () => {
-        const visibleWidth = grid.clientWidth;
-        const totalWidth = grid.scrollWidth;
-        const numDots = Math.ceil(totalWidth / visibleWidth);
-
-        // Create dots if needed
-        if (hintContainer.children.length !== numDots) {
-            hintContainer.innerHTML = '';
-            for (let i = 0; i < numDots; i++) {
-                const dot = document.createElement('span');
-                dot.setAttribute('role', 'button');
-                dot.setAttribute('aria-label', `Scroll to page ${i + 1}`);
-                dot.setAttribute('tabindex', '0');
-
-                // Click to scroll to position
-                dot.addEventListener('click', () => {
-                    grid.scrollTo({
-                        left: i * visibleWidth,
-                        behavior: 'smooth'
-                    });
-                });
-
-                // Keyboard accessibility
-                dot.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        dot.click();
-                    }
-                });
-
-                hintContainer.appendChild(dot);
-            }
-        }
-
-        // Update active state based on scroll position
-        const scrollPosition = grid.scrollLeft;
-        const activeIndex = Math.round(scrollPosition / visibleWidth);
-
-        Array.from(hintContainer.children).forEach((dot, index) => {
-            dot.classList.toggle('active', index === activeIndex);
-        });
-    };
-
-    // Initial update
-    updateIndicators();
-
-    // Update on scroll
-    grid.addEventListener('scroll', updateIndicators, { passive: true });
-
-    // Update on resize
-    window.addEventListener('resize', updateIndicators, { passive: true });
 }
 
 /**

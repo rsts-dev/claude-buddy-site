@@ -265,6 +265,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--spacing-xl);
   padding: var(--spacing-xs) var(--container-padding);
 }
 
@@ -626,17 +627,25 @@ a:hover {
   background: var(--color-bg-primary);
 }
 
+.flow-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
 .flow-item__icon {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-sm);
-  margin-bottom: var(--spacing-sm);
+  flex-shrink: 0;
 }
 
 .flow-item h3 {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-xs);
+  margin: 0;
   color: var(--color-text-primary);
 }
 
@@ -1049,17 +1058,24 @@ a:hover {
   border-color: var(--color-accent-primary);
 }
 
+.feature-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
 .feature-card__icon {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-sm);
-  margin-bottom: var(--spacing-base);
+  flex-shrink: 0;
 }
 
 .feature-card__title {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-sm);
+  margin: 0;
   color: var(--color-text-primary);
 }
 
@@ -1431,70 +1447,26 @@ a:hover {
 }
 
 .personas__grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-lg);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: var(--spacing-xl) var(--spacing-base);
-  margin: var(--spacing-3xl) calc(-1 * var(--container-padding)) 0;
-  scrollbar-width: none;
-}
-
-.personas__grid::-webkit-scrollbar {
-  display: none;
-}
-
-/* Scroll indicators */
-.personas__scroll-hint {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-xs);
-  margin-top: var(--spacing-lg);
-}
-
-.personas__scroll-hint span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-border);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.personas__scroll-hint span:hover,
-.personas__scroll-hint span.active {
-  background: var(--color-accent-primary);
-  transform: scale(1.2);
+  margin-top: var(--spacing-2xl);
 }
 
 .persona-card {
-  flex: 0 0 280px;
-  scroll-snap-align: center;
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
   text-align: left;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
+  transition: all 0.2s ease;
 }
 
 .persona-card:hover {
   border-color: var(--color-accent-primary);
-  transform: scale(1.05) translateY(-10px);
+  transform: translateY(-3px);
   background: var(--color-bg-tertiary);
-  z-index: 10;
-  box-shadow: var(--shadow-xl);
-}
-
-.persona-card:first-child {
-  margin-left: var(--spacing-xl);
-}
-
-.persona-card:last-child {
-  margin-right: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
 }
 
 .persona-card__header {
@@ -1528,7 +1500,6 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-xs);
-  justify-content: center;
 }
 
 .tag {
@@ -1557,7 +1528,7 @@ a:hover {
 
 .installation__options {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
   gap: var(--spacing-xl);
   margin-top: var(--spacing-3xl);
   margin-bottom: var(--spacing-3xl);
@@ -1568,6 +1539,8 @@ a:hover {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   padding: var(--spacing-xl);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .install-option__title {
@@ -1588,6 +1561,7 @@ a:hover {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
   overflow: hidden;
+  min-width: 0;
 }
 
 .code-block__copy {
@@ -1925,6 +1899,26 @@ a:hover {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+  .personas__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .nav {
+    gap: var(--spacing-base);
+  }
+
+  .nav__menu {
+    display: none;
+  }
+
+  .nav__actions {
+    margin-left: auto;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
   .hero__columns,
   .feature-block {
     grid-template-columns: 1fr;
@@ -1987,14 +1981,6 @@ a:hover {
     --font-size-3xl: 1.5rem;
   }
   
-  .nav__menu {
-    display: none;
-  }
-  
-  .nav__toggle {
-    display: flex;
-  }
-  
   .hero {
     padding: calc(80px + var(--spacing-2xl)) 0 var(--spacing-2xl);
   }
@@ -2020,7 +2006,7 @@ a:hover {
   }
 
   .personas__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .feature-grid {
@@ -2071,7 +2057,7 @@ a:hover {
   .container {
     --container-padding: 1rem;
   }
-  
+
   .hero__title {
     font-size: var(--font-size-3xl);
   }
@@ -2080,6 +2066,10 @@ a:hover {
     font-size: var(--font-size-xs);
   }
   
+  .personas__grid {
+    grid-template-columns: 1fr;
+  }
+
   .persona-card,
   .install-option {
     padding: var(--spacing-base);
